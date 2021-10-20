@@ -23,119 +23,120 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: SafeArea(
-          child: Center(
-        child: Container(
-          //alignment: Alignment.center,
-          width: 600,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      children: [
-                        expandedMethod1(context, 'male'),
-                        const SizedBox(width: 15),
-                        expandedMethod1(context, 'female'),
-                      ],
-                    )),
-              ),
-              Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.blueGrey,
+        child: Center(
+          child: Container(
+            width: 800,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        children: [
+                          expandedMethod1(context, 'male'),
+                          const SizedBox(width: 15),
+                          expandedMethod1(context, 'female'),
+                        ],
+                      )),
+                ),
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.blueGrey,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Height',
+                                style: Theme.of(context).textTheme.headline2,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text(
+                                    heughtVal.toStringAsFixed(1),
+                                    style:
+                                        Theme.of(context).textTheme.headline1,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    'cm',
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                ],
+                              ),
+                              Slider(
+                                value: heughtVal,
+                                min: 0,
+                                max: 250,
+                                onChanged: (newVal) {
+                                  setState(() {
+                                    heughtVal = newVal;
+                                  });
+                                },
+                              )
+                            ],
+                          ))),
+                ),
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        children: [
+                          expandedMethod2(context, 'age'),
+                          const SizedBox(width: 15),
+                          expandedMethod2(context, 'weight'),
+                        ],
+                      )),
+                ),
+                Container(
+                  color: Theme.of(context).primaryColor,
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height / 16,
+                  child: TextButton(
+                    child: Text(
+                      'Calculate',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    onPressed: () {
+                      var result = weight / pow(heughtVal / 100, 2);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Result(
+                                result: result, isMale: isMale, age: age);
+                          },
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Height',
-                              style: Theme.of(context).textTheme.headline2,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                              textBaseline: TextBaseline.alphabetic,
-                              children: [
-                                Text(
-                                  heughtVal.toStringAsFixed(1),
-                                  style: Theme.of(context).textTheme.headline1,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  'cm',
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                              ],
-                            ),
-                            Slider(
-                              value: heughtVal,
-                              min: 0,
-                              max: 250,
-                              onChanged: (newVal) {
-                                setState(() {
-                                  heughtVal = newVal;
-                                });
-                              },
-                            )
-                          ],
-                        ))),
-              ),
-              Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      children: [
-                        expandedMethod2(context, 'age'),
-                        const SizedBox(width: 15),
-                        expandedMethod2(context, 'weight'),
-                      ],
-                    )),
-              ),
-              Container(
-                color: Theme.of(context).primaryColor,
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height / 16,
-                child: TextButton(
-                  child: Text(
-                    'Calculate',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  onPressed: () {
-                    var result = weight / pow(heughtVal / 100, 2);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Result(
-                              result: result, isMale: isMale, age: age);
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                //color: Theme.of(context).primaryColor,
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height / 16,
-                child: Center(
-                  child: Text(
-                    'Djamal Yacine Contact me at: djaminf@hotmail.fr',
-                    style: Theme.of(context).textTheme.bodyText2,
+                      );
+                    },
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  //color: Theme.of(context).primaryColor,
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height / 16,
+                  child: Center(
+                    child: Text(
+                      'Djamal Yacine Contact me at: djaminf@hotmail.fr',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 
