@@ -1,5 +1,4 @@
-import 'dart:html';
-
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -46,19 +45,19 @@ class Result extends StatelessWidget {
           children: [
             Text(
               'Gender: ${isMale ? 'Male' : 'Female'}',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.headline1,
             ),
             Text(
               'Age: $age',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.headline1,
             ),
             Text(
-              'Result: ${result.toStringAsFixed(2)}',
-              style: Theme.of(context).textTheme.headline2,
+              'Result: ${result.toStringAsFixed(1)}',
+              style: Theme.of(context).textTheme.headline1,
             ),
             Text(
               'Healthness: $ResultPhrase',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.headline1,
               textAlign: TextAlign.center,
             )
           ],
